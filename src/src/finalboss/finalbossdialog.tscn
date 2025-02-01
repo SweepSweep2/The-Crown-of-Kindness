@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=3 uid="uid://k13l2ifn0ku2"]
+
+[ext_resource type="Script" path="res://finalboss/finalbossdialog.gd" id="1_egius"]
+[ext_resource type="FontFile" uid="uid://v7cdeutq3yhl" path="res://Retro Gaming.ttf" id="2_bfwwf"]
+[ext_resource type="Script" path="res://finalboss/color_rect_2.gd" id="2_tyqj3"]
+[ext_resource type="Texture2D" uid="uid://ccxio2t8ms1lb" path="res://finalboss/finalboss.png" id="3_vf6yd"]
+[ext_resource type="Texture2D" uid="uid://bnboit07k157u" path="res://finalboss/mask.png" id="4_iuchm"]
+[ext_resource type="AudioStream" uid="uid://d4ln8j1fsgmgc" path="res://finalboss/ambience.mp3" id="6_qo5w2"]
+[ext_resource type="Texture2D" uid="uid://cfce46rirmsm2" path="res://Player/player.png" id="7_d2s0i"]
+[ext_resource type="Texture2D" uid="uid://cu7cw3hmk0qe" path="res://finalboss/crown.png" id="8_yu57h"]
+
+[node name="finalbossdialog" type="Node2D"]
+script = ExtResource("1_egius")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+z_index = 14
+offset_left = -206.0
+offset_top = -109.0
+offset_right = 556.0
+offset_bottom = 352.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_tyqj3")
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -42.0
+offset_top = -32.0
+offset_right = 354.0
+offset_bottom = 213.0
+color = Color(0.200583, 0.11805, 0.289831, 1)
+
+[node name="dialog" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = 3.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_bfwwf")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][shake rate=20.0 level=5 connected=1]No, it can't be you...[/shake][/center]"
+scroll_active = false
+text_direction = 1
+
+[node name="dialog2" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = 3.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_bfwwf")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][shake rate=20.0 level=5 connected=1]You are here to ruin the kindness of this kingdom, aren't you?[/shake][/center]"
+scroll_active = false
+text_direction = 1
+
+[node name="dialog3" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = 3.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_bfwwf")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][shake rate=20.0 level=5 connected=1]Oh, you don't [color=red]see[/color], do you?[/shake][/center]"
+scroll_active = false
+text_direction = 1
+
+[node name="dialog4" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = 3.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_bfwwf")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][shake rate=20.0 level=5 connected=1]Those [color=red]goggles[/color] seem to cause some issues.[/shake][/center]"
+scroll_active = false
+text_direction = 1
+
+[node name="dialog5" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = 3.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_bfwwf")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][color=red][shake rate=20.0 level=5 connected=1]Let me fix that...[/shake][/color][/center]"
+scroll_active = false
+text_direction = 1
+
+[node name="dialog6" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = 3.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_bfwwf")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][color=red][shake rate=20.0 level=5 connected=1]You thought you were here to destroy the ultimate weapon and save this kingdom...[/shake][/color][/center]"
+scroll_active = false
+text_direction = 1
+
+[node name="dialog7" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = 3.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_bfwwf")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][color=red][shake rate=20.0 level=5 connected=1]However, you are the weapon sent to destroy this place.
+And you succeeded.[/shake][/color][/center]"
+scroll_active = false
+text_direction = 1
+
+[node name="dialog8" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = 3.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_bfwwf")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][color=red][shake rate=20.0 level=5 connected=1]Do you regret your decisions?
+Because there is no going back.[/shake][/color][/center]"
+scroll_active = false
+text_direction = 1
+
+[node name="image1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(164, 44)
+texture = ExtResource("3_vf6yd")
+hframes = 2
+
+[node name="image2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(132, 65)
+texture = ExtResource("4_iuchm")
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qo5w2")
+volume_db = 12.0
+autoplay = true
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(156, 48)
+texture = ExtResource("7_d2s0i")
+hframes = 5
+
+[node name="Crown" type="Sprite2D" parent="."]
+position = Vector2(155, 28)
+texture = ExtResource("8_yu57h")

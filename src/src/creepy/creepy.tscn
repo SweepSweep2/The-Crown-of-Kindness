@@ -1,0 +1,291 @@
+[gd_scene load_steps=28 format=3 uid="uid://ce1chh38gpp"]
+
+[ext_resource type="Texture2D" uid="uid://c5gtm6eycotb3" path="res://creepy/creepybase.png" id="1_62ytf"]
+[ext_resource type="Script" path="res://creepy/pillar.gd" id="2_6uegr"]
+[ext_resource type="Texture2D" uid="uid://yx7vkwwmppx2" path="res://creepy/creepypillar.png" id="2_spdnx"]
+[ext_resource type="Texture2D" uid="uid://cjorsvu8jljrd" path="res://creepy/creepyboss.png" id="3_dr5tu"]
+[ext_resource type="Texture2D" uid="uid://dfmttgd21w2qx" path="res://creepy/creepypillarbroken.png" id="5_3ou2q"]
+[ext_resource type="Script" path="res://creepy/boss.gd" id="5_yo66h"]
+[ext_resource type="PackedScene" uid="uid://cbpv6mtbneypy" path="res://Player/Player.tscn" id="7_imefb"]
+[ext_resource type="Texture2D" uid="uid://bad3tso2f1qrv" path="res://creepy/creepybossded.png" id="7_mhur8"]
+[ext_resource type="FontFile" uid="uid://v7cdeutq3yhl" path="res://Retro Gaming.ttf" id="8_h6uo1"]
+[ext_resource type="AudioStream" uid="uid://4ritsrbhr3f3" path="res://Music/whitesection.ogg" id="8_p8cnn"]
+[ext_resource type="AudioStream" uid="uid://c54pks02nkv7i" path="res://Player/hit.wav" id="9_dvso7"]
+[ext_resource type="Script" path="res://circuits/dialog.gd" id="9_s78mk"]
+[ext_resource type="AudioStream" uid="uid://b1vjn30mkutk2" path="res://Player/hitHurt.wav" id="10_xm1xu"]
+[ext_resource type="Texture2D" uid="uid://d0ymttwqr3j7j" path="res://creepy/hint.png" id="11_i6b3c"]
+[ext_resource type="Texture2D" uid="uid://dv5f5snotuf6g" path="res://creepy/hint2.png" id="12_o6q1d"]
+[ext_resource type="AudioStream" uid="uid://cej4l52p0rvqc" path="res://creepy/pillarbreak.wav" id="13_yodrr"]
+[ext_resource type="Script" path="res://pinkvillage/color_rect.gd" id="16_8nro8"]
+[ext_resource type="Texture2D" uid="uid://ckw7eipqrft25" path="res://pinkvillage/arrow.png" id="18_rysyc"]
+[ext_resource type="Script" path="res://creepy/arrow.gd" id="19_q8abb"]
+[ext_resource type="Script" path="res://creepy/nextarea.gd" id="20_uh63s"]
+[ext_resource type="AudioStream" uid="uid://cirwtyirtueb6" path="res://creepy/powerUp.wav" id="21_7edda"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6va1"]
+size = Vector2(10, 380)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3w30"]
+size = Vector2(660, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y7krh"]
+radius = 5.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8u66"]
+height = 54.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_888xj"]
+size = Vector2(72, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yx8dv"]
+size = Vector2(20, 70)
+
+[node name="creepy" type="Node2D"]
+
+[node name="white" type="Sprite2D" parent="."]
+modulate = Color(0.87451, 0.87451, 0.87451, 1)
+z_index = -2
+position = Vector2(325.5, 193.5)
+scale = Vector2(1.95156, 2.20278)
+texture = ExtResource("1_62ytf")
+
+[node name="base" type="Sprite2D" parent="."]
+modulate = Color(0.873298, 0.873298, 0.873298, 1)
+z_index = -2
+texture_filter = 1
+position = Vector2(320, 180)
+texture = ExtResource("1_62ytf")
+
+[node name="mapborders" type="StaticBody2D" parent="."]
+
+[node name="left" type="CollisionShape2D" parent="mapborders"]
+position = Vector2(-5, 180)
+shape = SubResource("RectangleShape2D_k6va1")
+
+[node name="right" type="CollisionShape2D" parent="mapborders"]
+position = Vector2(645, 180)
+shape = SubResource("RectangleShape2D_k6va1")
+
+[node name="up" type="CollisionShape2D" parent="mapborders"]
+position = Vector2(320, -5)
+shape = SubResource("RectangleShape2D_g3w30")
+
+[node name="down" type="CollisionShape2D" parent="mapborders"]
+position = Vector2(320, 365)
+shape = SubResource("RectangleShape2D_g3w30")
+
+[node name="pillarsbroken" type="Node2D" parent="."]
+
+[node name="pillar1broken" type="StaticBody2D" parent="pillarsbroken"]
+
+[node name="pillar1broken" type="Sprite2D" parent="pillarsbroken/pillar1broken"]
+texture_filter = 1
+position = Vector2(66, 66)
+texture = ExtResource("5_3ou2q")
+
+[node name="collision" type="CollisionShape2D" parent="pillarsbroken/pillar1broken"]
+position = Vector2(63, 65)
+shape = SubResource("CapsuleShape2D_y7krh")
+
+[node name="pillar1broken2" type="StaticBody2D" parent="pillarsbroken"]
+position = Vector2(496, 0)
+
+[node name="pillar1broken" type="Sprite2D" parent="pillarsbroken/pillar1broken2"]
+texture_filter = 1
+position = Vector2(66, 66)
+texture = ExtResource("5_3ou2q")
+
+[node name="collision" type="CollisionShape2D" parent="pillarsbroken/pillar1broken2"]
+position = Vector2(63, 65)
+shape = SubResource("CapsuleShape2D_y7krh")
+
+[node name="pillar1broken3" type="StaticBody2D" parent="pillarsbroken"]
+position = Vector2(496, 233)
+
+[node name="pillar1broken" type="Sprite2D" parent="pillarsbroken/pillar1broken3"]
+texture_filter = 1
+position = Vector2(66, 66)
+texture = ExtResource("5_3ou2q")
+
+[node name="collision" type="CollisionShape2D" parent="pillarsbroken/pillar1broken3"]
+position = Vector2(63, 65)
+shape = SubResource("CapsuleShape2D_y7krh")
+
+[node name="pillar1broken4" type="StaticBody2D" parent="pillarsbroken"]
+position = Vector2(0, 235)
+
+[node name="pillar1broken" type="Sprite2D" parent="pillarsbroken/pillar1broken4"]
+texture_filter = 1
+position = Vector2(66, 66)
+texture = ExtResource("5_3ou2q")
+
+[node name="collision" type="CollisionShape2D" parent="pillarsbroken/pillar1broken4"]
+position = Vector2(63, 65)
+shape = SubResource("CapsuleShape2D_y7krh")
+
+[node name="pillars" type="Node2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="pillar1" type="StaticBody2D" parent="pillars"]
+position = Vector2(-253, -117)
+script = ExtResource("2_6uegr")
+
+[node name="pillar1" type="Sprite2D" parent="pillars/pillar1"]
+texture_filter = 1
+position = Vector2(0, 3)
+texture = ExtResource("2_spdnx")
+
+[node name="collision" type="CollisionShape2D" parent="pillars/pillar1"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_v8u66")
+
+[node name="pillar2" type="StaticBody2D" parent="pillars"]
+position = Vector2(243, -117)
+script = ExtResource("2_6uegr")
+
+[node name="pillar1" type="Sprite2D" parent="pillars/pillar2"]
+texture_filter = 1
+position = Vector2(0, 3)
+texture = ExtResource("2_spdnx")
+
+[node name="collision" type="CollisionShape2D" parent="pillars/pillar2"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_v8u66")
+
+[node name="pillar3" type="StaticBody2D" parent="pillars"]
+position = Vector2(243, 116)
+script = ExtResource("2_6uegr")
+
+[node name="pillar1" type="Sprite2D" parent="pillars/pillar3"]
+texture_filter = 1
+position = Vector2(0, 3)
+texture = ExtResource("2_spdnx")
+
+[node name="collision" type="CollisionShape2D" parent="pillars/pillar3"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_v8u66")
+
+[node name="pillar4" type="StaticBody2D" parent="pillars"]
+position = Vector2(-253, 118)
+script = ExtResource("2_6uegr")
+
+[node name="pillar1" type="Sprite2D" parent="pillars/pillar4"]
+texture_filter = 1
+position = Vector2(0, 3)
+texture = ExtResource("2_spdnx")
+
+[node name="collision" type="CollisionShape2D" parent="pillars/pillar4"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_v8u66")
+
+[node name="boss" type="StaticBody2D" parent="."]
+position = Vector2(128, 77)
+script = ExtResource("5_yo66h")
+
+[node name="sprite" type="Sprite2D" parent="boss"]
+texture_filter = 1
+position = Vector2(5, 2)
+texture = ExtResource("3_dr5tu")
+
+[node name="ded" type="Sprite2D" parent="boss"]
+visible = false
+position = Vector2(6, 3)
+texture = ExtResource("7_mhur8")
+
+[node name="collision" type="CollisionShape2D" parent="boss"]
+position = Vector2(5, 2)
+shape = SubResource("RectangleShape2D_888xj")
+
+[node name="bullets" type="Node2D" parent="."]
+position = Vector2(90, 33)
+
+[node name="Player" parent="." instance=ExtResource("7_imefb")]
+position = Vector2(264, 201)
+
+[node name="dialog" type="RichTextLabel" parent="Player"]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = -157.0
+offset_top = 36.0
+offset_right = 156.0
+offset_bottom = 88.0
+theme_override_fonts/normal_font = ExtResource("8_h6uo1")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]To bring \"happiness\" to this world...
+[color=red][shake rate=20.0 level=5 connected=1]you must destroy the pillars of protection.[/shake][/color][/center]"
+scroll_active = false
+text_direction = 1
+script = ExtResource("9_s78mk")
+
+[node name="ColorRect2" type="ColorRect" parent="Player"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = -137.0
+offset_top = 32.0
+offset_right = 143.0
+offset_bottom = 89.0
+color = Color(0.333333, 0.333333, 0.333333, 0.431373)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_p8cnn")
+volume_db = -7.495
+autoplay = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_dvso7")
+volume_db = -9.838
+autoplay = true
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xm1xu")
+autoplay = true
+
+[node name="Hint" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(383, 93)
+rotation = -0.253383
+scale = Vector2(0.372093, 0.372093)
+texture = ExtResource("11_i6b3c")
+
+[node name="Hint2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(214, 290.474)
+scale = Vector2(0.38961, 0.38961)
+texture = ExtResource("12_o6q1d")
+
+[node name="Pillarbreak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_yodrr")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+z_index = 14
+offset_left = -1064.0
+offset_top = -235.0
+offset_right = 1083.0
+offset_bottom = 633.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("16_8nro8")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(615.333, 178.5)
+scale = Vector2(0.166667, 0.166667)
+texture = ExtResource("18_rysyc")
+script = ExtResource("19_q8abb")
+
+[node name="nextarea" type="Area2D" parent="."]
+script = ExtResource("20_uh63s")
+
+[node name="collision" type="CollisionShape2D" parent="nextarea"]
+position = Vector2(643, 181)
+shape = SubResource("RectangleShape2D_yx8dv")
+
+[node name="PowerUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_7edda")
+volume_db = 5.0
+
+[connection signal="body_entered" from="nextarea" to="nextarea" method="_on_body_entered"]

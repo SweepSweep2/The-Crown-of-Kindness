@@ -1,0 +1,445 @@
+[gd_scene load_steps=32 format=3 uid="uid://d23ni5pyl350y"]
+
+[ext_resource type="Script" path="res://circuits/music.gd" id="1_j7yau"]
+[ext_resource type="Texture2D" uid="uid://bc4amyyvelvv4" path="res://circuits/level3base.png" id="1_ph8b4"]
+[ext_resource type="Script" path="res://circuits/resistor.gd" id="2_cne2s"]
+[ext_resource type="Texture2D" uid="uid://65se4d40ut6" path="res://circuits/resistor.png" id="2_owatg"]
+[ext_resource type="Texture2D" uid="uid://bjjy580wdexb3" path="res://circuits/leddark.png" id="4_1q0tq"]
+[ext_resource type="Script" path="res://circuits/led.gd" id="4_raeop"]
+[ext_resource type="AudioStream" uid="uid://b4oto238sg20d" path="res://Music/music1.ogg" id="7_87pac"]
+[ext_resource type="FontFile" uid="uid://v7cdeutq3yhl" path="res://Retro Gaming.ttf" id="7_gq5i6"]
+[ext_resource type="Script" path="res://circuits/nextarea.gd" id="7_h77fr"]
+[ext_resource type="AudioStream" uid="uid://bdeo08ipxkc5f" path="res://Music/music1loop.ogg" id="8_3481r"]
+[ext_resource type="PackedScene" uid="uid://cbpv6mtbneypy" path="res://Player/Player.tscn" id="9_fx6m2"]
+[ext_resource type="Script" path="res://circuits/dialog.gd" id="11_esjxl"]
+[ext_resource type="AudioStream" uid="uid://b1vjn30mkutk2" path="res://Player/hitHurt.wav" id="12_5nnvm"]
+[ext_resource type="AudioStream" uid="uid://cq5l1yl04lb4e" path="res://Player/explosion.wav" id="13_tf72s"]
+[ext_resource type="AudioStream" uid="uid://c54pks02nkv7i" path="res://Player/hit.wav" id="14_v1vtb"]
+[ext_resource type="Script" path="res://pinkvillage/color_rect.gd" id="15_sfhf5"]
+[ext_resource type="Texture2D" uid="uid://dwt0qxcadro28" path="res://circuits/whitearrow.png" id="16_nqe75"]
+[ext_resource type="Script" path="res://circuits/arrow.gd" id="17_wcghl"]
+[ext_resource type="Texture2D" uid="uid://d1esevol3kph2" path="res://circuits/hint.png" id="19_mqoqr"]
+[ext_resource type="AudioStream" uid="uid://cirwtyirtueb6" path="res://creepy/powerUp.wav" id="20_fj77n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sc4o"]
+size = Vector2(640, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soqyw"]
+size = Vector2(571, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0rtt"]
+size = Vector2(640, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5nh1"]
+size = Vector2(571, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqufo"]
+size = Vector2(5, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcknd"]
+size = Vector2(5, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i68vg"]
+size = Vector2(640, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ntdc"]
+size = Vector2(640, 22)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovswn"]
+radius = 11.0
+height = 52.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f65ad"]
+radius = 11.0
+height = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pphf6"]
+size = Vector2(37.3276, 557.682)
+
+[node name="circuits" type="Node2D"]
+script = ExtResource("1_j7yau")
+
+[node name="base" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.431373)
+texture_filter = 1
+position = Vector2(320, 180)
+texture = ExtResource("1_ph8b4")
+
+[node name="wirebarriersneg" type="Area2D" parent="base"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="upperred" type="CollisionShape2D" parent="base/wirebarriersneg"]
+position = Vector2(0, -176.5)
+shape = SubResource("RectangleShape2D_8sc4o")
+
+[node name="lowerred" type="CollisionShape2D" parent="base/wirebarriersneg"]
+position = Vector2(-34.5, 3.5)
+shape = SubResource("RectangleShape2D_soqyw")
+
+[node name="wirebarrierspos" type="Area2D" parent="base"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="lowerblue" type="CollisionShape2D" parent="base/wirebarrierspos"]
+position = Vector2(0, 176.5)
+shape = SubResource("RectangleShape2D_k0rtt")
+
+[node name="upperblue" type="CollisionShape2D" parent="base/wirebarrierspos"]
+position = Vector2(-34.5, -3.5)
+shape = SubResource("RectangleShape2D_d5nh1")
+
+[node name="mapbarriers" type="StaticBody2D" parent="base"]
+
+[node name="barrierleft" type="CollisionShape2D" parent="base/mapbarriers"]
+position = Vector2(-322.5, 0)
+shape = SubResource("RectangleShape2D_pqufo")
+
+[node name="barrierright" type="CollisionShape2D" parent="base/mapbarriers"]
+position = Vector2(322.5, 0)
+shape = SubResource("RectangleShape2D_fcknd")
+
+[node name="upperred2" type="CollisionShape2D" parent="base/mapbarriers"]
+position = Vector2(0, -185.5)
+shape = SubResource("RectangleShape2D_i68vg")
+
+[node name="lowerred2" type="CollisionShape2D" parent="base/mapbarriers"]
+position = Vector2(-34.5, 2.5)
+shape = SubResource("RectangleShape2D_soqyw")
+
+[node name="lowerblue2" type="CollisionShape2D" parent="base/mapbarriers"]
+position = Vector2(0, 186)
+shape = SubResource("RectangleShape2D_3ntdc")
+
+[node name="upperblue2" type="CollisionShape2D" parent="base/mapbarriers"]
+position = Vector2(-34.5, -2.5)
+shape = SubResource("RectangleShape2D_d5nh1")
+
+[node name="resistors" type="Node2D" parent="."]
+
+[node name="resistor1" type="CharacterBody2D" parent="resistors"]
+position = Vector2(34, 60)
+collision_mask = 2
+script = ExtResource("2_cne2s")
+
+[node name="Resistor" type="Sprite2D" parent="resistors/resistor1"]
+texture_filter = 1
+texture = ExtResource("2_owatg")
+
+[node name="collision" type="CollisionShape2D" parent="resistors/resistor1"]
+shape = SubResource("CapsuleShape2D_ovswn")
+
+[node name="resistor2" type="CharacterBody2D" parent="resistors"]
+position = Vector2(182, 105)
+collision_mask = 2
+script = ExtResource("2_cne2s")
+
+[node name="Resistor" type="Sprite2D" parent="resistors/resistor2"]
+texture_filter = 1
+texture = ExtResource("2_owatg")
+
+[node name="collision" type="CollisionShape2D" parent="resistors/resistor2"]
+shape = SubResource("CapsuleShape2D_ovswn")
+
+[node name="resistor3" type="CharacterBody2D" parent="resistors"]
+position = Vector2(330, 136)
+collision_mask = 2
+script = ExtResource("2_cne2s")
+
+[node name="Resistor" type="Sprite2D" parent="resistors/resistor3"]
+texture_filter = 1
+texture = ExtResource("2_owatg")
+
+[node name="collision" type="CollisionShape2D" parent="resistors/resistor3"]
+shape = SubResource("CapsuleShape2D_ovswn")
+
+[node name="resistor4" type="CharacterBody2D" parent="resistors"]
+position = Vector2(404, 50)
+collision_mask = 2
+script = ExtResource("2_cne2s")
+
+[node name="Resistor" type="Sprite2D" parent="resistors/resistor4"]
+texture_filter = 1
+texture = ExtResource("2_owatg")
+
+[node name="collision" type="CollisionShape2D" parent="resistors/resistor4"]
+shape = SubResource("CapsuleShape2D_ovswn")
+
+[node name="resistor5" type="CharacterBody2D" parent="resistors"]
+position = Vector2(552, 100)
+collision_mask = 2
+script = ExtResource("2_cne2s")
+
+[node name="Resistor" type="Sprite2D" parent="resistors/resistor5"]
+texture_filter = 1
+texture = ExtResource("2_owatg")
+
+[node name="collision" type="CollisionShape2D" parent="resistors/resistor5"]
+shape = SubResource("CapsuleShape2D_ovswn")
+
+[node name="resistor6" type="CharacterBody2D" parent="resistors"]
+position = Vector2(494, 231)
+collision_mask = 2
+script = ExtResource("2_cne2s")
+
+[node name="Resistor" type="Sprite2D" parent="resistors/resistor6"]
+texture_filter = 1
+texture = ExtResource("2_owatg")
+
+[node name="collision" type="CollisionShape2D" parent="resistors/resistor6"]
+shape = SubResource("CapsuleShape2D_ovswn")
+
+[node name="resistor7" type="CharacterBody2D" parent="resistors"]
+position = Vector2(346, 268)
+collision_mask = 2
+script = ExtResource("2_cne2s")
+
+[node name="Resistor" type="Sprite2D" parent="resistors/resistor7"]
+texture_filter = 1
+texture = ExtResource("2_owatg")
+
+[node name="collision" type="CollisionShape2D" parent="resistors/resistor7"]
+shape = SubResource("CapsuleShape2D_ovswn")
+
+[node name="resistor8" type="CharacterBody2D" parent="resistors"]
+position = Vector2(124, 302)
+collision_mask = 2
+script = ExtResource("2_cne2s")
+
+[node name="Resistor" type="Sprite2D" parent="resistors/resistor8"]
+texture_filter = 1
+texture = ExtResource("2_owatg")
+
+[node name="collision" type="CollisionShape2D" parent="resistors/resistor8"]
+shape = SubResource("CapsuleShape2D_ovswn")
+
+[node name="leds" type="Node2D" parent="."]
+
+[node name="led1" type="Area2D" parent="leds"]
+position = Vector2(76, 156)
+script = ExtResource("4_raeop")
+
+[node name="led" type="Sprite2D" parent="leds/led1"]
+texture_filter = 1
+position = Vector2(14, 0)
+texture = ExtResource("4_1q0tq")
+
+[node name="collision" type="CollisionShape2D" parent="leds/led1"]
+position = Vector2(15, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f65ad")
+
+[node name="led2" type="Area2D" parent="leds"]
+position = Vector2(223, 85)
+script = ExtResource("4_raeop")
+
+[node name="led" type="Sprite2D" parent="leds/led2"]
+texture_filter = 1
+position = Vector2(15, 0)
+texture = ExtResource("4_1q0tq")
+
+[node name="collision" type="CollisionShape2D" parent="leds/led2"]
+position = Vector2(16, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f65ad")
+
+[node name="led3" type="Area2D" parent="leds"]
+position = Vector2(445, 41)
+script = ExtResource("4_raeop")
+
+[node name="led" type="Sprite2D" parent="leds/led3"]
+texture_filter = 1
+position = Vector2(15, 0)
+texture = ExtResource("4_1q0tq")
+
+[node name="collision" type="CollisionShape2D" parent="leds/led3"]
+position = Vector2(16, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f65ad")
+
+[node name="led4" type="Area2D" parent="leds"]
+position = Vector2(535, 268)
+script = ExtResource("4_raeop")
+
+[node name="led" type="Sprite2D" parent="leds/led4"]
+texture_filter = 1
+position = Vector2(15, 0)
+texture = ExtResource("4_1q0tq")
+
+[node name="collision" type="CollisionShape2D" parent="leds/led4"]
+position = Vector2(16, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f65ad")
+
+[node name="led5" type="Area2D" parent="leds"]
+position = Vector2(387, 320)
+script = ExtResource("4_raeop")
+
+[node name="led" type="Sprite2D" parent="leds/led5"]
+texture_filter = 1
+position = Vector2(15, 0)
+texture = ExtResource("4_1q0tq")
+
+[node name="collision" type="CollisionShape2D" parent="leds/led5"]
+position = Vector2(16, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f65ad")
+
+[node name="led6" type="Area2D" parent="leds"]
+position = Vector2(240, 266)
+script = ExtResource("4_raeop")
+
+[node name="led" type="Sprite2D" parent="leds/led6"]
+texture_filter = 1
+position = Vector2(14, 0)
+texture = ExtResource("4_1q0tq")
+
+[node name="collision" type="CollisionShape2D" parent="leds/led6"]
+position = Vector2(15, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f65ad")
+
+[node name="led7" type="Area2D" parent="leds"]
+position = Vector2(167, 306)
+script = ExtResource("4_raeop")
+
+[node name="led" type="Sprite2D" parent="leds/led7"]
+texture_filter = 1
+position = Vector2(13, 0)
+texture = ExtResource("4_1q0tq")
+
+[node name="collision" type="CollisionShape2D" parent="leds/led7"]
+position = Vector2(14, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f65ad")
+
+[node name="led8" type="Area2D" parent="leds"]
+position = Vector2(18, 249)
+script = ExtResource("4_raeop")
+
+[node name="led" type="Sprite2D" parent="leds/led8"]
+texture_filter = 1
+position = Vector2(14, 0)
+texture = ExtResource("4_1q0tq")
+
+[node name="collision" type="CollisionShape2D" parent="leds/led8"]
+position = Vector2(15, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f65ad")
+
+[node name="nextarea" type="Area2D" parent="."]
+position = Vector2(29.3333, 331.5)
+rotation = 1.55227
+scale = Vector2(0.166667, 0.166667)
+script = ExtResource("7_h77fr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nextarea"]
+position = Vector2(149.605, -100.037)
+shape = SubResource("RectangleShape2D_pphf6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_87pac")
+autoplay = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3481r")
+
+[node name="Player" parent="." instance=ExtResource("9_fx6m2")]
+position = Vector2(77, 96)
+
+[node name="dialog" type="RichTextLabel" parent="Player"]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+texture_filter = 1
+offset_left = -148.0
+offset_top = -42.0
+offset_right = 165.0
+offset_bottom = 10.0
+theme_override_fonts/normal_font = ExtResource("7_gq5i6")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]To bring happiness to this world...
+[color=red][shake rate=20.0 level=5 connected=1]you must turn off the lights.[/shake][/color][/center]"
+scroll_active = false
+text_direction = 1
+script = ExtResource("11_esjxl")
+
+[node name="ColorRect2" type="ColorRect" parent="Player"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = -128.0
+offset_top = -46.0
+offset_right = 152.0
+offset_bottom = -6.0
+color = Color(0.333333, 0.333333, 0.333333, 0.431373)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -188.0
+offset_top = -301.0
+offset_right = 802.0
+offset_bottom = 490.0
+color = Color(0.0904824, 0.0904823, 0.0904823, 1)
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_5nnvm")
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_tf72s")
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_v1vtb")
+volume_db = -5.455
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+z_index = 14
+offset_left = -1064.0
+offset_top = -235.0
+offset_right = 1083.0
+offset_bottom = 633.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("15_sfhf5")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(29.3333, 331.5)
+rotation = 1.55227
+scale = Vector2(0.166667, 0.166667)
+texture = ExtResource("16_nqe75")
+script = ExtResource("17_wcghl")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_top = 352.0
+offset_right = 93.0
+offset_bottom = 360.0
+color = Color(0.0497766, 0.0497766, 0.0497766, 1)
+
+[node name="Hint" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(140, 58)
+rotation = -0.273454
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("19_mqoqr")
+
+[node name="PowerUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_fj77n")
+volume_db = 5.0
+
+[connection signal="body_entered" from="base/wirebarriersneg" to="resistors/resistor1" method="_on_wirebarriersneg_body_entered"]
+[connection signal="body_entered" from="base/wirebarriersneg" to="resistors/resistor2" method="_on_wirebarriersneg_body_entered"]
+[connection signal="body_entered" from="base/wirebarriersneg" to="resistors/resistor3" method="_on_wirebarriersneg_body_entered"]
+[connection signal="body_entered" from="base/wirebarriersneg" to="resistors/resistor4" method="_on_wirebarriersneg_body_entered"]
+[connection signal="body_entered" from="base/wirebarriersneg" to="resistors/resistor5" method="_on_wirebarriersneg_body_entered"]
+[connection signal="body_entered" from="base/wirebarriersneg" to="resistors/resistor6" method="_on_wirebarriersneg_body_entered"]
+[connection signal="body_entered" from="base/wirebarriersneg" to="resistors/resistor7" method="_on_wirebarriersneg_body_entered"]
+[connection signal="body_entered" from="base/wirebarriersneg" to="resistors/resistor8" method="_on_wirebarriersneg_body_entered"]
+[connection signal="body_entered" from="base/wirebarrierspos" to="resistors/resistor1" method="_on_wirebarrierspos_body_entered"]
+[connection signal="body_entered" from="base/wirebarrierspos" to="resistors/resistor2" method="_on_wirebarrierspos_body_entered"]
+[connection signal="body_entered" from="base/wirebarrierspos" to="resistors/resistor3" method="_on_wirebarrierspos_body_entered"]
+[connection signal="body_entered" from="base/wirebarrierspos" to="resistors/resistor4" method="_on_wirebarrierspos_body_entered"]
+[connection signal="body_entered" from="base/wirebarrierspos" to="resistors/resistor5" method="_on_wirebarrierspos_body_entered"]
+[connection signal="body_entered" from="base/wirebarrierspos" to="resistors/resistor6" method="_on_wirebarrierspos_body_entered"]
+[connection signal="body_entered" from="base/wirebarrierspos" to="resistors/resistor7" method="_on_wirebarrierspos_body_entered"]
+[connection signal="body_entered" from="base/wirebarrierspos" to="resistors/resistor8" method="_on_wirebarrierspos_body_entered"]
+[connection signal="body_entered" from="nextarea" to="nextarea" method="_on_body_entered"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfsf7yu8tp1cr"]
+
+[ext_resource type="Script" path="res://circuits/bullet.gd" id="1_iu67a"]
+[ext_resource type="Texture2D" uid="uid://dafxb5a4mq8qd" path="res://circuits/ledbullet.png" id="2_hvy08"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpodx"]
+size = Vector2(18, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icygc"]
+size = Vector2(18, 4)
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_iu67a")
+
+[node name="bullet" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+texture_filter = 1
+position = Vector2(-9, -2)
+scale = Vector2(18, 4)
+texture = ExtResource("2_hvy08")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-9, -2)
+shape = SubResource("RectangleShape2D_qpodx")
+
+[node name="bullet2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+texture_filter = 1
+position = Vector2(9, 2)
+scale = Vector2(18, 4)
+texture = ExtResource("2_hvy08")
+
+[node name="collision2" type="CollisionShape2D" parent="."]
+position = Vector2(9, 2)
+shape = SubResource("RectangleShape2D_icygc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

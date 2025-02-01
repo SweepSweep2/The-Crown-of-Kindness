@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn14i1iichppx"]
+
+[ext_resource type="Script" path="res://finalboss/finalbullets.gd" id="1_hwdsc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogr4r"]
+size = Vector2(4, 4)
+
+[node name="finalbullets" type="Area2D"]
+script = ExtResource("1_hwdsc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+color = Color(0.698039, 0, 0.145098, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -2)
+shape = SubResource("RectangleShape2D_ogr4r")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

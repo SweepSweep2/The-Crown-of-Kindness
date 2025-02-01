@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjnltpnr7hrhg"]
+
+[ext_resource type="Script" path="res://finalvillage/finalvilbullets.gd" id="1_0o502"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylqs2"]
+size = Vector2(4, 4)
+
+[node name="finalvilbullets" type="Area2D"]
+script = ExtResource("1_0o502")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+color = Color(0.199949, 0.145088, 0.113731, 1)
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -2)
+shape = SubResource("RectangleShape2D_ylqs2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
