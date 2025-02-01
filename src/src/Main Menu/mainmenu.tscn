@@ -1,0 +1,309 @@
+[gd_scene load_steps=21 format=3 uid="uid://cbp5cbtedrbju"]
+
+[ext_resource type="Script" path="res://Main Menu/intro.gd" id="1_pr70w"]
+[ext_resource type="FontFile" uid="uid://v7cdeutq3yhl" path="res://Retro Gaming.ttf" id="2_ggopf"]
+[ext_resource type="Texture2D" uid="uid://do6a28nto8ps3" path="res://Main Menu/godotlogo.png" id="3_5k152"]
+[ext_resource type="Texture2D" uid="uid://c8w8tldcbypb4" path="res://Main Menu/LMMS.png" id="4_wg6pe"]
+[ext_resource type="Texture2D" uid="uid://dc7g5qahgd3g0" path="res://Main Menu/Aseprite.png" id="5_yf6go"]
+[ext_resource type="PackedScene" uid="uid://cod14mf6nad45" path="res://Main Menu/Clouds/CloudSummoner.tscn" id="6_gljtv"]
+[ext_resource type="Texture2D" uid="uid://d32p4bj5166" path="res://Main Menu/Buttons/greenbuttonpressed.png" id="7_p0ccs"]
+[ext_resource type="Texture2D" uid="uid://rhkxielu7diw" path="res://Main Menu/Buttons/greenbutton.png" id="8_2ic6b"]
+[ext_resource type="Texture2D" uid="uid://ccyrl1ibblxtm" path="res://Main Menu/Buttons/greenbuttonhover.png" id="9_idm43"]
+[ext_resource type="Script" path="res://Main Menu/playbutton.gd" id="10_p30wq"]
+[ext_resource type="Script" path="res://Main Menu/optionsbutton.gd" id="11_roypq"]
+[ext_resource type="Script" path="res://Main Menu/quitbutton.gd" id="12_i4v7h"]
+[ext_resource type="AudioStream" uid="uid://cwsl1umixbmgt" path="res://Music/intro.ogg" id="13_i0a2w"]
+[ext_resource type="PackedScene" uid="uid://crf1byjv5bynk" path="res://Main Menu/Settings.tscn" id="14_kjj6i"]
+[ext_resource type="AudioStream" uid="uid://c1lj2scwh2trb" path="res://Main Menu/blipSelect.wav" id="15_fjsuq"]
+[ext_resource type="AudioStream" uid="uid://w5fi7rspbxt6" path="res://Main Menu/mainmenu.ogg" id="16_pxseo"]
+[ext_resource type="AudioStream" uid="uid://dbs5q5woskxu2" path="res://Main Menu/reverse symbal.ogg" id="18_w3kis"]
+[ext_resource type="AudioStream" uid="uid://d4ln8j1fsgmgc" path="res://finalboss/ambience.mp3" id="20_un4vj"]
+[ext_resource type="Script" path="res://Main Menu/ambience.gd" id="21_ajwba"]
+[ext_resource type="Texture2D" uid="uid://chwktmd4ul452" path="res://finalboss/header-removebg-preview.png" id="22_y2lvk"]
+
+[node name="Mainmenu" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 321.0
+offset_bottom = 181.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 321.0
+offset_bottom = 181.0
+
+[node name="Intro" type="Node" parent="."]
+script = ExtResource("1_pr70w")
+
+[node name="Godot" type="Label" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 136.0
+offset_top = 101.0
+offset_right = 173.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 6
+text = "Made With
+GODOT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXRText" type="Label" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 128.0
+offset_top = 165.0
+offset_right = 185.0
+offset_bottom = 184.0
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 6
+text = "SFX with JSFXR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LMMSText" type="Label" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 9.0
+offset_top = 85.0
+offset_right = 46.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 5
+text = "Music With
+LMMS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AsepriteText" type="Label" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 276.0
+offset_top = 86.0
+offset_right = 313.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 5
+text = "Art with
+ASEPRITE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 131.0
+offset_top = 81.0
+offset_right = 183.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 6
+text = "Developed by
+Sweep & Cake"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(155, 83)
+scale = Vector2(0.0832559, 0.0832559)
+texture = ExtResource("3_5k152")
+
+[node name="LMMS" type="Sprite2D" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(27, 75)
+scale = Vector2(0.0429688, 0.0429688)
+texture = ExtResource("4_wg6pe")
+
+[node name="Aseprite" type="Sprite2D" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(294, 77)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("5_yf6go")
+
+[node name="JSFXR" type="Sprite2D" parent="Intro"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(156.953, 149.75)
+scale = Vector2(0.0949009, 0.0949009)
+texture = ExtResource("22_y2lvk")
+
+[node name="Game name" type="Label" parent="."]
+z_index = -2
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 48.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 22
+text = "The Crown of Kindness"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayText" type="Label" parent="."]
+z_index = -2
+offset_left = 84.0
+offset_top = 60.0
+offset_right = 228.0
+offset_bottom = 88.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 11
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsText" type="Label" parent="."]
+z_index = -2
+offset_left = 84.0
+offset_top = 87.0
+offset_right = 228.0
+offset_bottom = 115.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 11
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitText" type="Label" parent="."]
+z_index = -2
+offset_left = 84.0
+offset_top = 113.0
+offset_right = 228.0
+offset_bottom = 141.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 11
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloudSummoner" parent="." instance=ExtResource("6_gljtv")]
+z_index = -4
+position = Vector2(93, 99)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+z_index = -6
+offset_right = 321.0
+offset_bottom = 181.0
+color = Color(0.0392157, 1, 1, 1)
+
+[node name="Play" type="TextureButton" parent="."]
+visible = false
+z_index = -3
+offset_left = 126.0
+offset_top = 65.0
+offset_right = 185.0
+offset_bottom = 85.0
+texture_normal = ExtResource("7_p0ccs")
+texture_pressed = ExtResource("8_2ic6b")
+texture_hover = ExtResource("9_idm43")
+stretch_mode = 0
+script = ExtResource("10_p30wq")
+
+[node name="Options" type="TextureButton" parent="."]
+visible = false
+z_index = -3
+offset_left = 126.0
+offset_top = 92.0
+offset_right = 185.0
+offset_bottom = 112.0
+texture_normal = ExtResource("7_p0ccs")
+texture_pressed = ExtResource("8_2ic6b")
+texture_hover = ExtResource("9_idm43")
+stretch_mode = 0
+script = ExtResource("11_roypq")
+
+[node name="Quit" type="TextureButton" parent="."]
+visible = false
+z_index = -3
+offset_left = 126.0
+offset_top = 118.0
+offset_right = 185.0
+offset_bottom = 138.0
+texture_normal = ExtResource("7_p0ccs")
+texture_pressed = ExtResource("8_2ic6b")
+texture_hover = ExtResource("9_idm43")
+stretch_mode = 0
+script = ExtResource("12_i4v7h")
+
+[node name="Play Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_i0a2w")
+volume_db = -1.766
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 323.0
+offset_bottom = 183.0
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+visible = false
+offset_right = 324.0
+offset_bottom = 185.0
+color = Color(0, 0, 0, 1)
+
+[node name="Name" type="Label" parent="."]
+visible = false
+z_index = 5
+offset_top = 60.0
+offset_right = 320.0
+offset_bottom = 88.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 11
+text = "The Crown of Kindness"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Jam" type="Label" parent="."]
+visible = false
+z_index = 5
+offset_left = 23.0
+offset_top = 59.0
+offset_right = 302.0
+offset_bottom = 87.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ggopf")
+theme_override_font_sizes/font_size = 11
+text = "Made for the Pirate Software Game Jam 16"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" parent="." instance=ExtResource("14_kjj6i")]
+visible = false
+z_index = -2
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = -2.0
+
+[node name="BlipSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_fjsuq")
+
+[node name="Mainmenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_pxseo")
+
+[node name="ReverseSymbal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_w3kis")
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_un4vj")
+volume_db = 11.375
+script = ExtResource("21_ajwba")
+
+[connection signal="button_down" from="Play" to="Play" method="_on_button_down"]
+[connection signal="button_up" from="Play" to="Play" method="_on_button_up"]
+[connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
+[connection signal="button_down" from="Options" to="Options" method="_on_button_down"]
+[connection signal="button_up" from="Options" to="Options" method="_on_button_up"]
+[connection signal="pressed" from="Options" to="Options" method="_on_pressed"]
+[connection signal="button_down" from="Quit" to="Quit" method="_on_button_down"]
+[connection signal="button_up" from="Quit" to="Quit" method="_on_button_up"]
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]

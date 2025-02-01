@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dbs5q5woskxu2"
+path="res://.godot/imported/reverse symbal.ogg-d27cdf6fe7c14a2ce0d4e94891a725ad.oggvorbisstr"
+
+[deps]
+
+source_file="res://Main Menu/reverse symbal.ogg"
+dest_files=["res://.godot/imported/reverse symbal.ogg-d27cdf6fe7c14a2ce0d4e94891a725ad.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

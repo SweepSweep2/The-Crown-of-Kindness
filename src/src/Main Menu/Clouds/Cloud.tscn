@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bevkr8jq1pxdl"]
+
+[ext_resource type="Script" path="res://Main Menu/Clouds/cloud.gd" id="1_cputq"]
+
+[node name="Cloud" type="Sprite2D"]
+z_index = -5
+script = ExtResource("1_cputq")

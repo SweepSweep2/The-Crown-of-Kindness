@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://crf1byjv5bynk"]
+
+[ext_resource type="FontFile" uid="uid://v7cdeutq3yhl" path="res://Retro Gaming.ttf" id="1_31kkk"]
+[ext_resource type="Texture2D" uid="uid://d32p4bj5166" path="res://Main Menu/Buttons/greenbuttonpressed.png" id="2_2djpo"]
+[ext_resource type="Script" path="res://Main Menu/volume_slider.gd" id="2_jtmwh"]
+[ext_resource type="Texture2D" uid="uid://rhkxielu7diw" path="res://Main Menu/Buttons/greenbutton.png" id="3_3karw"]
+[ext_resource type="Texture2D" uid="uid://ccyrl1ibblxtm" path="res://Main Menu/Buttons/greenbuttonhover.png" id="4_s7to0"]
+[ext_resource type="Script" path="res://Main Menu/exitbutton.gd" id="5_1gajr"]
+[ext_resource type="AudioStream" uid="uid://c1lj2scwh2trb" path="res://Main Menu/blipSelect.wav" id="7_e3u8h"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 313.0
+offset_bottom = 174.0
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 313.0
+offset_bottom = 174.0
+
+[node name="TopText" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 91.0
+offset_top = 6.0
+offset_right = 235.0
+offset_bottom = 34.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_31kkk")
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="X" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 214.0
+offset_top = 7.0
+offset_right = 358.0
+offset_bottom = 35.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_31kkk")
+theme_override_font_sizes/font_size = 19
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeText" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = -35.0
+offset_top = 29.0
+offset_right = 109.0
+offset_bottom = 57.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_31kkk")
+theme_override_font_sizes/font_size = 10
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 66.0
+offset_top = 36.0
+offset_right = 169.0
+offset_bottom = 52.0
+value = 100.0
+script = ExtResource("2_jtmwh")
+
+[node name="Exit" type="TextureButton" parent="."]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 262.0
+offset_top = 11.0
+offset_right = 310.0
+offset_bottom = 31.0
+texture_normal = ExtResource("2_2djpo")
+texture_pressed = ExtResource("3_3karw")
+texture_hover = ExtResource("4_s7to0")
+stretch_mode = 0
+script = ExtResource("5_1gajr")
+
+[node name="BlipSelect" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(158, 106)
+stream = ExtResource("7_e3u8h")
+
+[connection signal="button_down" from="Exit" to="Exit" method="_on_button_down"]
+[connection signal="button_up" from="Exit" to="Exit" method="_on_button_up"]
+[connection signal="pressed" from="Exit" to="Exit" method="_on_pressed"]
