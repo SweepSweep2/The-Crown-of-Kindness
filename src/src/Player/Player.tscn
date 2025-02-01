@@ -1,0 +1,202 @@
+[gd_scene load_steps=22 format=3 uid="uid://cbpv6mtbneypy"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_ymotk"]
+[ext_resource type="Texture2D" uid="uid://cfce46rirmsm2" path="res://Player/player.png" id="2_pwl83"]
+[ext_resource type="PackedScene" uid="uid://drw3xit1jrake" path="res://Player/Weapon.tscn" id="3_cpqi7"]
+[ext_resource type="Script" path="res://Player/weapon.gd" id="4_sdsh2"]
+[ext_resource type="Texture2D" uid="uid://bvomsjpd17aqr" path="res://Player/weapon.png" id="5_bd45r"]
+[ext_resource type="Script" path="res://Player/ProgressBars.gd" id="5_briow"]
+[ext_resource type="Texture2D" uid="uid://drqcogsbavixg" path="res://Player/stamina.png" id="6_v412l"]
+[ext_resource type="Texture2D" uid="uid://bqvd6xicdqj5e" path="res://Player/health.png" id="7_rg5ws"]
+[ext_resource type="Texture2D" uid="uid://e3k6riycgaih" path="res://Player/kindness.png" id="8_wqnkd"]
+[ext_resource type="FontFile" uid="uid://v7cdeutq3yhl" path="res://Retro Gaming.ttf" id="9_jrkfd"]
+[ext_resource type="Texture2D" uid="uid://1r5xqbjcuh7u" path="res://Player/healthborder.png" id="10_3q726"]
+[ext_resource type="Texture2D" uid="uid://b05a6mbssu15" path="res://Player/staminaborder.png" id="11_bfw2s"]
+[ext_resource type="Texture2D" uid="uid://hadcdm3fxu2l" path="res://Player/friendshipborder.png" id="12_cko7c"]
+[ext_resource type="AudioStream" uid="uid://gvbvtxrqli10" path="res://Player/laserShoot.wav" id="13_d67os"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hw0y8"]
+radius = 5.5
+height = 26.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmley"]
+atlas = ExtResource("2_pwl83")
+region = Rect2(0, 0, 26, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpn5y"]
+atlas = ExtResource("2_pwl83")
+region = Rect2(78, 0, 26, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0un3"]
+atlas = ExtResource("2_pwl83")
+region = Rect2(104, 0, 26, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfp1b"]
+atlas = ExtResource("2_pwl83")
+region = Rect2(26, 0, 26, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8wya"]
+atlas = ExtResource("2_pwl83")
+region = Rect2(52, 0, 26, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_446x2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmley")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpn5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0un3")
+}],
+"loop": true,
+"name": &"Sprinting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfp1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8wya")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 4.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ymotk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 5)
+shape = SubResource("CapsuleShape2D_hw0y8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.5, 5)
+scale = Vector2(0.791667, 0.702703)
+sprite_frames = SubResource("SpriteFrames_446x2")
+animation = &"Sprinting"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(5, 5)
+scale = Vector2(0.0859375, 0.0195312)
+script = ExtResource("4_sdsh2")
+
+[node name="Weapon" parent="Node2D" instance=ExtResource("3_cpqi7")]
+position = Vector2(168.727, 128)
+scale = Vector2(2.90909, 11.8154)
+texture = ExtResource("5_bd45r")
+
+[node name="Progress Bars" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -163.0
+offset_top = -90.0
+offset_right = -148.0
+offset_bottom = -75.0
+script = ExtResource("5_briow")
+
+[node name="Stamina" type="TextureProgressBar" parent="Progress Bars"]
+z_index = 4
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 38.0
+offset_bottom = 32.0
+value = 10.0
+texture_progress = ExtResource("6_v412l")
+
+[node name="Health" type="TextureProgressBar" parent="Progress Bars"]
+z_index = 4
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 38.0
+offset_bottom = 15.0
+value = 10.0
+texture_progress = ExtResource("7_rg5ws")
+
+[node name="Friendship" type="TextureProgressBar" parent="Progress Bars"]
+z_index = 4
+layout_mode = 0
+offset_left = 6.0
+offset_top = 41.0
+offset_right = 38.0
+offset_bottom = 49.0
+value = 10.0
+texture_progress = ExtResource("8_wqnkd")
+
+[node name="Stamina Counter" type="Label" parent="Progress Bars"]
+z_index = 4
+layout_mode = 0
+offset_left = 7.0
+offset_top = 24.0
+offset_right = 38.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("9_jrkfd")
+theme_override_font_sizes/font_size = 6
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health Counter" type="Label" parent="Progress Bars"]
+z_index = 4
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 38.0
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("9_jrkfd")
+theme_override_font_sizes/font_size = 6
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Friendship Counter" type="Label" parent="Progress Bars"]
+z_index = 4
+layout_mode = 0
+offset_left = 7.0
+offset_top = 41.0
+offset_right = 38.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("9_jrkfd")
+theme_override_font_sizes/font_size = 6
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health Border" type="Sprite2D" parent="Progress Bars"]
+z_index = 4
+position = Vector2(22, 8)
+texture = ExtResource("10_3q726")
+
+[node name="Stamina Border" type="Sprite2D" parent="Progress Bars"]
+z_index = 4
+position = Vector2(22, 25)
+texture = ExtResource("11_bfw2s")
+
+[node name="Background" type="ColorRect" parent="Progress Bars"]
+z_index = 3
+layout_mode = 0
+offset_left = 3.0
+offset_right = 41.0
+offset_bottom = 53.0
+color = Color(0.153077, 0.153077, 0.153077, 1)
+
+[node name="Friendship Border" type="Sprite2D" parent="Progress Bars"]
+z_index = 4
+position = Vector2(22, 42)
+texture = ExtResource("12_cko7c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_d67os")
